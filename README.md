@@ -1,6 +1,6 @@
 # Datadog Trace Client Method Wrapper
 
-[![CircleCI](https://circleci.com/gh/brandfolder/dd-trace-rb-method-wrapper/tree/master.svg?style=svg&circle-token=???)](https://circleci.com/gh/brandfolder/dd-trace-rb-method-wrapper/tree/master)
+[![CircleCI](https://circleci.com/gh/brandfolder/ddtrace-rb-method-wrapper/tree/master.svg?style=svg)](https://circleci.com/gh/brandfolder/ddtrace-rb-method-wrapper/tree/master)
 
 ``ddtrace-method-wrapper`` augments Datadog's tracing library `ddtrace` for Ruby.
 It adds a convenience method for classes to wrap method execution in custom tracing.
