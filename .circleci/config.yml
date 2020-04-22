@@ -21,7 +21,7 @@ jobs:
           name: Publish to Rubygems
           command: |
               gem build ddtrace_method_wrapper.gemspec
-              gem push "ddtrace-method-wrapper-$(git describe --tags | sed 's/^v//').gem"
+              gem push "ddtrace-method-wrapper-$(echo $CIRCLE_TAG | sed 's/^v//').gem"
 workflows:
   version: 2
   test:
