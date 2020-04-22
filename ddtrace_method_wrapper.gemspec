@@ -8,9 +8,9 @@ Gem::Specification.new do |s|
   s.version     = (ENV['CIRCLE_TAG'] || '0.0.0.test').gsub('v','')
   s.authors     = ["Brandfolder, Inc."]
   s.email       = 'developers@brandfolder.com'
-  s.files       = ["lib/datadog_trace_wrapper.rb"]
-  s.homepage    = 'https://github.com/brandfolder/dd-trace-rb-method-wrapper'
-  s.license       = 'MIT'
+  s.files       = Dir['{lib/**/*,[A-Z]*}']
+  s.homepage    = 'https://github.com/brandfolder/ddtrace-rb-method-wrapper'
+  s.license     = 'MIT'
 
   s.summary     = "Datadog.tracer.trace lib wrapper"
   s.description = <<-EOS.gsub(/^[\s]+/, '')
