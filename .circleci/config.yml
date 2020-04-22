@@ -20,8 +20,8 @@ jobs:
       - run:
           name: Publish to Rubygems
           command: |
-              gem build ddtrace-method-wrapper.gemspec
-              gem push "ddtrace-method-wrapper-$(git describe --tags).gem"
+              gem build ddtrace_method_wrapper.gemspec
+              gem push "ddtrace-method-wrapper-$(git describe --tags | sed 's/^v//').gem"
 workflows:
   version: 2
   test:
