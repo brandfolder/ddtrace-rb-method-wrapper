@@ -1,0 +1,10 @@
+$ ruby benchmark/run.rb
+                                                    user     system      total        real
+configured class init and execute                4.350076   0.053250   4.403326 (  5.777677)
+configured class init and execute enabled=false  2.809001   0.021529   2.830530 (  3.205507)
+manual instrumentation class execute             3.274435   0.022033   3.296468 (  3.513875)
+unconfigured class init and execute              0.023628   0.000660   0.024288 (  0.026316)
+configured class execute                         3.544032   0.025629   3.569661 (  3.689214)
+configured class execute enabled=false           2.692494   0.018710   2.711204 (  2.851045)
+manual instrumentation class execute             3.109429   0.018598   3.128027 (  3.255024)
+unconfigured class execute                       0.008553   0.001499   0.010052 (  0.014606)
