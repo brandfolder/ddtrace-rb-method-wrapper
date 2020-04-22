@@ -15,14 +15,7 @@ Gem::Specification.new do |s|
   s.summary     = "Datadog.tracer.trace lib wrapper"
   s.description = <<-EOS.gsub(/^[\s]+/, '')
     `ddtrace-method-wrapper` adds convenience methods to Datadog's ruby tracing library `ddtrace`.
-    Extend your classes and modules and wrap their methods with custom datadog tracing:
-    ```
-    class Myclass
-      extend DatadogTraceWrapper
-
-      trace :method1, service_name: 'web'
-    end
-    ```
+    Extend your classes and modules and wrap their methods with custom datadog tracing.
   EOS
 
   if s.respond_to?(:metadata)

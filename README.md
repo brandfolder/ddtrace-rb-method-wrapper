@@ -8,7 +8,7 @@ It adds a convenience method for classes to wrap method execution in custom trac
 ## Getting Started
 
 Load ``ddtrace_method_wrapper``, extend the desired class or module, and specify the methods to trace.
-The ``service_name`` keyword argument is required.
+The ``span_type`` keyword argument is required.
 
 ```
 require 'ddtrace_method_wrapper'
