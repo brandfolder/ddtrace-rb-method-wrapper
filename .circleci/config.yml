@@ -2,14 +2,45 @@ version: 2
 jobs:
   test:
     docker:
-        - image: circleci/ruby:2.5.5
+      - image: circleci/ruby:2.5.5
     steps:
       - checkout
       - run: bundle install
       - run: rubocop --only Lint/Debugger
       - run: rspec ./spec
+  publish:
+    working_directory: ~/repo
+    docker:
+      - image: circleci/ruby:2.5.5
+    steps:
+      - checkout
+      - run:
+          name: Setup Rubygems
+          command: bash .circleci/setup-rubygems.sh
+      - run:
+          name: Publish to Rubygems
+          command: |
+              gem build ddtrace-method-wrapper.gemspec
+              gem push "ddtrace-method-wrapper-$(git describe --tags).gem"
 workflows:
   version: 2
   test:
     jobs:
       - test
+  publish-tag:
+    jobs:
+      - test:
+          filters:
+            tags:
+              only: /.*/
+            branches:
+              ignore: /.*/
+      - publish:
+          context: rubygems-credentials
+          requires:
+            - test
+          filters:
+            tags:
+              only: /.*/
+            branches:
+              ignore: /.*/
