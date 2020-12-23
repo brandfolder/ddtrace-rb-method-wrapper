@@ -20,7 +20,7 @@ module DatadogTraceWrapper
   #   Defaults to ClassName#Method
   # trace_kwargs::
   #   Keyword arguments passed through to Datadog.tracer.trace, listed here:
-  #   https://docs.datadoghq.com/tracing/setup/ruby/#manual-instrumentation
+  #   https://docs.datadoghq.com/tracing/setup_overview/setup/ruby/#manual-instrumentation
   def trace(*method_names, span_type:, service: nil, resource: nil, **trace_kwargs)
 
     method_names.each do |m|
