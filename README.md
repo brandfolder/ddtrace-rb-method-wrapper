@@ -35,4 +35,4 @@ end
 
 
 For more specific configuration, Datadog tracing allows for a variety of options which are passed through
-https://docs.datadoghq.com/tracing/setup/ruby/#manual-instrumentation
+https://docs.datadoghq.com/tracing/setup_overview/setup/ruby/#manual-instrumentation.
