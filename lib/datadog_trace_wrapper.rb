@@ -1,7 +1,6 @@
 # CoreUsage:
 # extend DatadogTraceWrapper
 module DatadogTraceWrapper
-
   # Instructs the class to wrap methods for custom datadog tracing
   #
   # == Parameters:
@@ -22,13 +21,12 @@ module DatadogTraceWrapper
   #   Keyword arguments passed through to Datadog.tracer.trace, listed here:
   #   https://docs.datadoghq.com/tracing/setup_overview/setup/ruby/#manual-instrumentation
   def trace(*method_names, span_type:, service: nil, resource: nil, **trace_kwargs)
-
     method_names.each do |m|
       proxy = Module.new do
         define_method(m) do |*args, **kwargs|
           service  ||= ENV['DD_TRACE_METHOD_WRAPPER_SERVICE']
-          resource ||= "#{self.class.name}##{m.to_s}"
-          Datadog.tracer.trace(
+          resource ||= "#{self.class.name}##{m}"
+          Datadog::Tracing.trace(
             span_type,
             service: service,
             resource: resource,
@@ -39,7 +37,7 @@ module DatadogTraceWrapper
         end
       end
 
-      self.prepend proxy
+      prepend proxy
     end
   end
 end
