@@ -27,8 +27,8 @@ module DatadogTraceWrapper
       proxy = Module.new do
         define_method(m) do |*args, **kwargs|
           service  ||= ENV['DD_TRACE_METHOD_WRAPPER_SERVICE']
-          resource ||= "#{self.class.name}##{m.to_s}"
-          Datadog.tracer.trace(
+          resource ||= "#{self.class.name}##{m}"
+          Datadog::Tracing.trace(
             span_type,
             service: service,
             resource: resource,
@@ -39,7 +39,7 @@ module DatadogTraceWrapper
         end
       end
 
-      self.prepend proxy
+      prepend proxy
     end
   end
 end
