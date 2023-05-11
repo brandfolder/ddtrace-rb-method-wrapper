@@ -1,6 +1,6 @@
 require 'ddtrace'
 require 'benchmark'
-require_relative './lib/ddtrace_method_wrapper'
+require_relative '../lib/ddtrace_method_wrapper'
 
 n = 100_000
 
@@ -17,28 +17,28 @@ end
 
 class DatadogTraceWrapperBenchmarkManualInstrumentation
   def method
-    Datadog.tracer.trace('benchmark') do
+    Datadog::Tracing.trace('benchmark') do
     end
   end
 end
 
 Benchmark.bm do |benchmark|
   benchmark.report("configured class init and execute") do
-    Datadog.configuration.tracer.enabled = true
+    Datadog.configuration.tracing.enabled = true
     n.times do
       DatadogTraceWrapperBenchmarkWrapped.new.method
     end
   end
 
   benchmark.report("configured class init and execute enabled=false") do
-    Datadog.configuration.tracer.enabled = false
+    Datadog.configuration.tracing.enabled = false
     n.times do
       DatadogTraceWrapperBenchmarkWrapped.new.method
     end
   end
 
   benchmark.report("manual instrumentation class execute") do
-    Datadog.configuration.tracer.enabled = true
+    Datadog.configuration.tracing.enabled = true
     n.times do
       DatadogTraceWrapperBenchmarkManualInstrumentation.new.method
     end
@@ -51,7 +51,7 @@ Benchmark.bm do |benchmark|
   end
 
   benchmark.report("configured class execute") do
-    Datadog.configuration.tracer.enabled = true
+    Datadog.configuration.tracing.enabled = true
     inst = DatadogTraceWrapperBenchmarkWrapped.new
     n.times do
       inst.method
@@ -59,7 +59,7 @@ Benchmark.bm do |benchmark|
   end
 
   benchmark.report("configured class execute enabled=false") do
-    Datadog.configuration.tracer.enabled = false
+    Datadog.configuration.tracing.enabled = false
     inst = DatadogTraceWrapperBenchmarkWrapped.new
     n.times do
       inst.method
@@ -67,7 +67,7 @@ Benchmark.bm do |benchmark|
   end
 
   benchmark.report("manual instrumentation class execute") do
-    Datadog.configuration.tracer.enabled = true
+    Datadog.configuration.tracing.enabled = true
     inst = DatadogTraceWrapperBenchmarkManualInstrumentation.new
     n.times do
       inst.method
