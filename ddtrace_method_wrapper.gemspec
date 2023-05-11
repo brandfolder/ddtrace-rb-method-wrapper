@@ -5,7 +5,7 @@ $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
 
 Gem::Specification.new do |s|
   s.name        = 'ddtrace-method-wrapper'
-  s.version     = (ENV['CIRCLE_TAG'] || '0.0.0.test').gsub('v','')
+  s.version     = '2.0.0'
   s.authors     = ["Brandfolder, Inc."]
   s.email       = 'developers@brandfolder.com'
   s.files       = Dir['{lib/**/*,[A-Z]*}']
